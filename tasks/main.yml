@@ -1,6 +1,5 @@
 ---
-
-- name: "ensure some internal hosts can be found on external hosts"
+- name: "Ensure some internal hosts can be found on external hosts"
   ansible.builtin.lineinfile:
     path: /etc/hosts
     regexp: "{{ item.key }}.{{ basic.local_domain }}"
