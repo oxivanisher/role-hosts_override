@@ -1,2 +1,4 @@
 ---
-hosts_override_internal:
+hosts_override_add: []
+hosts_override_remove: []
+hosts_override_local_domain: local

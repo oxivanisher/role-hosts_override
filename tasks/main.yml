@@ -1,9 +1,16 @@
 ---
-- name: "Ensure some internal hosts can be found on external hosts"
+- name: "Add entry" # noqa no-tabs
   ansible.builtin.lineinfile:
     path: /etc/hosts
-    regexp: "{{ item.key }}.{{ basic.local_domain }}"
-    line: "{{ item.value }}      {{ item.key }}.{{ basic.local_domain }} {{ item.key }}"
-  loop: "{{ hosts_override_internal | dict2items }}"
+    regexp: "{{ item.key }}.{{ hosts_override_local_domain }}"
+    line: "{{ item.value }}	{{ item.key }}.{{ hosts_override_local_domain }} {{ item.key }}"
+  loop: "{{ hosts_override_add | dictsort| dict2items }}"
+
+- name: "Remove entry"
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    regexp: "{{ item.key }}.{{ hosts_override_local_domain }}"
+    state: absent
+  loop: "{{ hosts_override_remove | dictsort | dict2items }}"
 
   # when ansible_hostname != item.key could be used if this should not deploy the host entry self
