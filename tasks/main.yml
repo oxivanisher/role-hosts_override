@@ -5,6 +5,8 @@
     regexp: "{{ item.key }}.{{ hosts_override_local_domain }}"
     line: "{{ item.value }}	{{ item.key }}.{{ hosts_override_local_domain }} {{ item.key }}"
   loop: "{{ hosts_override_add | dict2items }}"
+  become: true
+  become_user: root
 
 - name: "Remove entry"
   ansible.builtin.lineinfile:
@@ -12,5 +14,7 @@
     regexp: "{{ item.key }}.{{ hosts_override_local_domain }}"
     state: absent
   loop: "{{ hosts_override_remove | dict2items }}"
+  become: true
+  become_user: root
 
   # when ansible_hostname != item.key could be used if this should not deploy the host entry self
