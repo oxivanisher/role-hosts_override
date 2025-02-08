@@ -1,5 +1,6 @@
 hosts_override
 ==============
+[![Ansible Lint](https://github.com/oxivanisher/role-hosts_override/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/oxivanisher/role-hosts_override/actions/workflows/ansible-lint.yml)
 
 Add and remove some hosts to `/etc/hosts`.
 
