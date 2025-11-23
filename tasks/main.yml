@@ -17,4 +17,4 @@
   become: true
   become_user: root
 
-  # when ansible_hostname != item.key could be used if this should not deploy the host entry self
+  # when ansible_facts.hostname != item.key could be used if this should not deploy the host entry self
